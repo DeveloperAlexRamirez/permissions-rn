@@ -36,6 +36,14 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+  	<string>Necesito saber tu ubicación para mostrar el mapa</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  	<string>Necesito saber tu ubicación para mostrar el mapa</string>
+  	<key>NSLocationAlwaysUsageDescription</key>
+  	<string>Necesito saber tu ubicación para mostrar el mapa</string>
+
+
+
 	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

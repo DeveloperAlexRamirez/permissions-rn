@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState, useEffect} from 'react';
 import {
   PermissionStatus,
   PERMISSIONS,
@@ -6,13 +6,12 @@ import {
   check,
   openSettings,
 } from 'react-native-permissions';
-import {Platform} from 'react-native';
-import {useEffect} from 'react';
-import {AppState} from 'react-native';
-
+import {Platform, AppState} from 'react-native';
 export interface PermissionsState {
   locationStatus: PermissionStatus;
 }
+
+// TODO: Revisar AndroidManifest CTRL + P
 
 export const permissionInitialState: PermissionsState = {
   locationStatus: 'unavailable',
@@ -32,11 +31,12 @@ export const PermissionsProvider = ({children}: any) => {
     AppState.addEventListener('change', state => {
       if (state !== 'active') return;
 
-      // Escucha los cambios de los permisos (si es que los cambia manualmente)
+      // Escucha los cambios de los permisos (si es que el usuario los cambia manualmente)
       checkLocationPermission();
     });
   }, []);
 
+  // Para android es "request"
   const askLocationPermission = async () => {
     let permissionStatus: PermissionStatus;
 
@@ -58,6 +58,7 @@ export const PermissionsProvider = ({children}: any) => {
     });
   };
 
+  // Para iOS es "check"
   const checkLocationPermission = async () => {
     let permissionStatus: PermissionStatus;
 
