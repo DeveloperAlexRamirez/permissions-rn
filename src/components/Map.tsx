@@ -2,6 +2,7 @@ import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
 import LoadingScreen from '../screens/LoadingScreen';
+import Fab from './Fab';
 
 interface Props {
   markers?: Marker[];
@@ -36,6 +37,16 @@ const Map = ({markers}: Props) => {
           description="Descripcion del marcador"
         /> */}
       </MapView>
+
+      <Fab
+        iconName="pencil"
+        onPress={() => console.log('Hola')}
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          right: 20,
+        }}
+      />
     </>
   );
 };
